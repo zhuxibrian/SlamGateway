@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration version="1.0">
+
+    <mqttBroker ip="127.0.0.1" port="1883"/>
+
+    <slams>
+        <slam id="1" ip="192.168.1.1" port="1883" group="1"/>
+    </slams>
+
+    <slamSubMessages>
+        <subMessage name="move"/>
+    </slamSubMessages>
+
+    <ctrlSubMessages>
+        <subMessage name="chargeConnect"/>
+    </ctrlSubMessages>
+
+</configuration>

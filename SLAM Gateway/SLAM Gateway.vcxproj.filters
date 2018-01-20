@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="rwproducer.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="rwconsumer.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="rwconfig.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="slamgateway.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rwserver.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_slamgateway.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwconfig.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwconsumer.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwproducer.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwserver.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_slamgateway.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files\Server">
+      <UniqueIdentifier>{c2162e36-3c0a-4a7e-b6c4-0b21693c4392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Server">
+      <UniqueIdentifier>{1af391bf-6972-46ba-aaeb-e3a04fadecdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{400d90ee-4c05-4753-9cc2-95bce691abb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{1c3bffb9-3cae-449f-89ac-01e6b0be1bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{1e2c568c-62a5-48c3-8d0e-cc2225c77b5c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="slamgateway.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="slamgateway.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="slamgateway.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rwproducer.h">
+      <Filter>Header Files\Server</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rwconsumer.h">
+      <Filter>Header Files\Server</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rwconfig.h">
+      <Filter>Header Files\Server</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rwserver.h">
+      <Filter>Header Files\Server</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_slamgateway.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SLAM Gateway.rc" />
+  </ItemGroup>
+</Project>
