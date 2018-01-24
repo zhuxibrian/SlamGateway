@@ -2,17 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="rwproducer.cpp">
-      <Filter>Source Files\Server</Filter>
-    </ClCompile>
     <ClCompile Include="rwconsumer.cpp">
       <Filter>Source Files\Server</Filter>
     </ClCompile>
     <ClCompile Include="rwconfig.cpp">
       <Filter>Source Files\Server</Filter>
-    </ClCompile>
-    <ClCompile Include="slamgateway.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rwserver.cpp">
       <Filter>Source Files\Server</Filter>
@@ -26,14 +20,35 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_rwconsumer.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_rwproducer.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_rwserver.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwslam.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_rwslam.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_rwzero.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_rwzero.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="rwslam.cpp">
+      <Filter>Source Files\slam</Filter>
+    </ClCompile>
+    <ClCompile Include="rwzero.cpp">
+      <Filter>Source Files\slam</Filter>
+    </ClCompile>
+    <ClCompile Include="slamgateway.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_slamgateway.cpp">
       <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_slamgateway.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +79,9 @@
       <UniqueIdentifier>{1af391bf-6972-46ba-aaeb-e3a04fadecdf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Generated Files">
-      <UniqueIdentifier>{400d90ee-4c05-4753-9cc2-95bce691abb0}</UniqueIdentifier>
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <ParseFiles>true</ParseFiles>
     </Filter>
     <Filter Include="Generated Files\Debug">
       <UniqueIdentifier>{1c3bffb9-3cae-449f-89ac-01e6b0be1bb2}</UniqueIdentifier>
@@ -72,19 +89,19 @@
     <Filter Include="Generated Files\Release">
       <UniqueIdentifier>{1e2c568c-62a5-48c3-8d0e-cc2225c77b5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\slam">
+      <UniqueIdentifier>{0f072c7c-baaf-4d9c-a316-44a841b624ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\slam">
+      <UniqueIdentifier>{fc13affc-9142-48a4-b13d-b43a95f2eb17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="slamgateway.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="slamgateway.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="slamgateway.qrc">
       <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="rwproducer.h">
-      <Filter>Header Files\Server</Filter>
     </CustomBuild>
     <CustomBuild Include="rwconsumer.h">
       <Filter>Header Files\Server</Filter>
@@ -95,6 +112,15 @@
     <CustomBuild Include="rwserver.h">
       <Filter>Header Files\Server</Filter>
     </CustomBuild>
+    <CustomBuild Include="rwslam.h">
+      <Filter>Header Files\slam</Filter>
+    </CustomBuild>
+    <CustomBuild Include="rwzero.h">
+      <Filter>Header Files\slam</Filter>
+    </CustomBuild>
+    <CustomBuild Include="slamgateway.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">
@@ -102,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_slamgateway.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rwexception.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

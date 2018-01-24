@@ -71,6 +71,7 @@ bool RWConfig::praseXML(QString strConfigXMLPath)
 /*解析mqtt代理服务器配置参数*/
 void RWConfig::praseMqttConfig(QDomNode& node)
 {
+	m_mqttConfig.clear();
 	QDomNamedNodeMap attributes = node.attributes();
 	for (int i=0; i<attributes.size(); i++)
 	{
@@ -82,6 +83,7 @@ void RWConfig::praseMqttConfig(QDomNode& node)
 /*解析所有slam车配置参数*/
 void RWConfig::praseSlamList(QDomNode& node)
 {
+	m_slamList.clear();
 	QDomNodeList slamNodeList = node.childNodes();
 	for (int i=0; i<slamNodeList.size(); i++)
 	{
@@ -100,6 +102,7 @@ void RWConfig::praseSlamList(QDomNode& node)
 /*解析slam 模块支持的子命令（move等）*/
 void RWConfig::praseSlamMessages(QDomNode& node)
 {
+	m_slamMessages.clear();
 	QDomNodeList slamMesList = node.childNodes();
 	for (int i=0; i<slamMesList.size(); i++)
 	{
@@ -113,6 +116,7 @@ void RWConfig::praseSlamMessages(QDomNode& node)
 /*解析ctrl 模块支持的自命令（chargeConnect等）*/
 void RWConfig::praseCtrlMessages(QDomNode& node)
 {
+	m_ctrlMessages.clear();
 	QDomNodeList ctrlMesList = node.childNodes();
 	for (int i = 0; i < ctrlMesList.size(); i++)
 	{

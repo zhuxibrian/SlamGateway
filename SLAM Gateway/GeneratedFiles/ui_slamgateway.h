@@ -13,10 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -26,6 +28,8 @@ class Ui_SLAMGatewayClass
 {
 public:
     QWidget *centralWidget;
+    QHBoxLayout *horizontalLayout;
+    QTextEdit *serverInfo;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -39,6 +43,15 @@ public:
         SLAMGatewayClass->setMaximumSize(QSize(640, 480));
         centralWidget = new QWidget(SLAMGatewayClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        serverInfo = new QTextEdit(centralWidget);
+        serverInfo->setObjectName(QStringLiteral("serverInfo"));
+
+        horizontalLayout->addWidget(serverInfo);
+
         SLAMGatewayClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(SLAMGatewayClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));

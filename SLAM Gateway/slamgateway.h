@@ -12,12 +12,18 @@ public:
 	SLAMGateway(QWidget *parent = Q_NULLPTR);
 	~SLAMGateway();
 
+	
 public:
 	void Init();
 	void Start();
 
+public slots :
+	void onServerInfo(QString info);
+
 private:
 	RWServer *m_pRWServer;
+
+	QString m_strServerInfo;
 
 private:
 	Ui::SLAMGatewayClass ui;
