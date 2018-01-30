@@ -59,10 +59,10 @@ bool RWConfig::praseXML(QString strConfigXMLPath)
 			praseMqttConfig(dom_node);
 		else if (element.tagName() == "slams")
 			praseSlamList(dom_node);
-		else if (element.tagName() == "slamSubMessages")
-			praseSlamMessages(dom_node);
-		else if (element.tagName() == "ctrlSubMessages")
-			praseCtrlMessages(dom_node);
+		//else if (element.tagName() == "slamSubMessages")
+		//	praseSlamMessages(dom_node);
+		//else if (element.tagName() == "ctrlSubMessages")
+		//	praseCtrlMessages(dom_node);
 	}
 
 	return true;
@@ -71,59 +71,59 @@ bool RWConfig::praseXML(QString strConfigXMLPath)
 /*解析mqtt代理服务器配置参数*/
 void RWConfig::praseMqttConfig(QDomNode& node)
 {
-	m_mqttConfig.clear();
+	m_MqttConfig.clear();
 	QDomNamedNodeMap attributes = node.attributes();
 	for (int i=0; i<attributes.size(); i++)
 	{
 		QDomNode attributeNode = attributes.item(i);
-		m_mqttConfig[attributeNode.nodeName()] = attributeNode.nodeValue();
+		m_MqttConfig[attributeNode.nodeName()] = attributeNode.nodeValue();
 	}
 }
 
 /*解析所有slam车配置参数*/
 void RWConfig::praseSlamList(QDomNode& node)
 {
-	m_slamList.clear();
+	m_SlamList.clear();
 	QDomNodeList slamNodeList = node.childNodes();
 	for (int i=0; i<slamNodeList.size(); i++)
 	{
 		QDomNode slamNode = slamNodeList.item(i);
 		QDomNamedNodeMap slamAttributes = slamNode.attributes();
-		SlamConfig slamConfig;
+		RW::SlamConfig slamConfig;
 		for (int j=0; j<slamAttributes.size(); j++)
 		{
 			QDomNode attributeNode = slamAttributes.item(j);
 			slamConfig[attributeNode.nodeName()] = attributeNode.nodeValue();
 		}
-		m_slamList.append(slamConfig);
+		m_SlamList.append(slamConfig);
 	}
 }
 
 /*解析slam 模块支持的子命令（move等）*/
-void RWConfig::praseSlamMessages(QDomNode& node)
-{
-	m_slamMessages.clear();
-	QDomNodeList slamMesList = node.childNodes();
-	for (int i=0; i<slamMesList.size(); i++)
-	{
-		QDomNode  mesNode = slamMesList.item(i);
-		QDomElement mesElement = mesNode.toElement();
-		if (mesElement.hasAttribute("name"))
-			m_slamMessages.append(mesElement.attributeNode("name").value());
-	}
-}
-
-/*解析ctrl 模块支持的自命令（chargeConnect等）*/
-void RWConfig::praseCtrlMessages(QDomNode& node)
-{
-	m_ctrlMessages.clear();
-	QDomNodeList ctrlMesList = node.childNodes();
-	for (int i = 0; i < ctrlMesList.size(); i++)
-	{
-		QDomNode  mesNode = ctrlMesList.item(i);
-		QDomElement mesElement = mesNode.toElement();
-		if (mesElement.hasAttribute("name"))
-			m_ctrlMessages.append(mesElement.attributeNode("name").value());
-	}
-}
+//void RWConfig::praseSlamMessages(QDomNode& node)
+//{
+//	m_SlamMessages.clear();
+//	QDomNodeList slamMesList = node.childNodes();
+//	for (int i=0; i<slamMesList.size(); i++)
+//	{
+//		QDomNode  mesNode = slamMesList.item(i);
+//		QDomElement mesElement = mesNode.toElement();
+//		if (mesElement.hasAttribute("name"))
+//			m_SlamMessages.append(mesElement.attributeNode("name").value());
+//	}
+//}
+//
+///*解析ctrl 模块支持的自命令（chargeConnect等）*/
+//void RWConfig::praseCtrlMessages(QDomNode& node)
+//{
+//	m_CtrlMessages.clear();
+//	QDomNodeList ctrlMesList = node.childNodes();
+//	for (int i = 0; i < ctrlMesList.size(); i++)
+//	{
+//		QDomNode  mesNode = ctrlMesList.item(i);
+//		QDomElement mesElement = mesNode.toElement();
+//		if (mesElement.hasAttribute("name"))
+//			m_CtrlMessages.append(mesElement.attributeNode("name").value());
+//	}
+//}
 

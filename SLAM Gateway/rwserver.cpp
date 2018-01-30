@@ -1,11 +1,14 @@
 #include "rwserver.h"
 #include "rwconfig.h"
 
-
-
 RWServer::RWServer(QObject *parent)
 	: QObject(parent)
 {
+	RW::mapSlamActions["forward"]	= RW::SlamAction::forward;
+	RW::mapSlamActions["backward"]	= RW::SlamAction::backward;
+	RW::mapSlamActions["leftward"]	= RW::SlamAction::leftward;
+	RW::mapSlamActions["rightward"] = RW::SlamAction::rightward;
+	RW::mapSlamActions["moveTo"]	= RW::SlamAction::moveTo;
 }
 
 RWServer::~RWServer()
@@ -21,16 +24,16 @@ void RWServer::Start()
 	rwConfig.praseXML(CONFIGURATIONPATH);
 	ServerInfo("RW Server Prase xml config.");
 
-	
-	QHostAddress host(rwConfig.m_mqttConfig["ip"]);
-	qint16 port = rwConfig.m_mqttConfig["port"].toInt();
-	if (host.isNull() || port == 0)
-		throw RWException("123", 123, "mqtt broker ip/port is invaild");
-	
+	QHostAddress host(rwConfig.m_MqttConfig["ip"]);
+	qint16 port = rwConfig.m_MqttConfig["port"].toInt();
 
-	for (int i=0; i<rwConfig.m_slamList.size(); i++)
+
+	if (host.isNull() || port == 0)
+		throw QString("File:%1 Line:%2 Exception:%3").arg(__FILE__).arg(__LINE__).arg("mqtt broker ip/port is invaild");
+
+	for (int i=0; i<rwConfig.m_SlamList.size(); i++)
 	{
-		SlamConfig slamConfig = rwConfig.m_slamList[i];
+		RW::SlamConfig slamConfig = rwConfig.m_SlamList[i];
 		if (slamConfig["ip"] == "" || slamConfig["port"] == "")
 			continue;
 

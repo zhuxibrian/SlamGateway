@@ -29,9 +29,9 @@ void SLAMGateway::Start()
 	{
 		m_pRWServer->Start();
 	}
-	catch (RWException* e)
+	catch (QString e)
 	{
-		onServerInfo(e->getError());
+		onServerInfo(e);
 	}
 	
 }

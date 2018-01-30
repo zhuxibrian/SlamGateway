@@ -7,12 +7,12 @@
         <slam id="1" model="zero" ip="192.168.1.1" port="1883" group="1"/>
     </slams>
 
-    <slamSubMessages>
+    <!--<slamSubMessages>
         <subMessage name="move"/>
     </slamSubMessages>
 
     <ctrlSubMessages>
         <subMessage name="chargeConnect"/>
-    </ctrlSubMessages>
+    </ctrlSubMessages>-->
 
 </configuration>

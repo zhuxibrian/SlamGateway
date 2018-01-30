@@ -1,7 +1,8 @@
 #pragma once
 #include <QException>
+#include <exception>
 
-class RWException : public QException
+class RWException : std::exception
 {
 private:
 	QString	_strFileName;
@@ -10,7 +11,7 @@ private:
 	QString _strErr;
 
 public:
-	RWException() : QException()
+	RWException() : exception()
 	{
 		_nLine = 0;
 	}

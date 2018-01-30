@@ -19,13 +19,13 @@ public:
 private:
 	void praseMqttConfig(QDomNode& node);
 	void praseSlamList(QDomNode& node);
-	void praseSlamMessages(QDomNode& node);
-	void praseCtrlMessages(QDomNode& node);
+	//void praseSlamMessages(QDomNode& node);
+	//void praseCtrlMessages(QDomNode& node);
 
 public:
-	MqttConfig m_mqttConfig;
-	SlamList m_slamList;
-	SlamMessages m_slamMessages;
-	CtrlMessages m_ctrlMessages;
+	RW::MqttConfig m_MqttConfig;
+	RW::SlamList m_SlamList;
+	//RW::SlamMessages m_SlamMessages;
+	//RW::CtrlMessages m_CtrlMessages;
 	QString m_configVersion;
 };
