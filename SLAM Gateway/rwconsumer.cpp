@@ -2,6 +2,7 @@
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QJsonArray>
+#include "mqttmsghelper.h"
 
 #define ServerInfo m_pRWServer->ServerInfo
 
@@ -35,32 +36,12 @@ RWConsumer::~RWConsumer()
 
 void RWConsumer::publishToCtrl(RW::MqttMsgStruct mqttMsg, int submessageIndex)
 {
-	QJsonObject json;
-	json.insert("messageType", mqttMsg.mqttMsgHead.msgType);
-	json.insert("from", mqttMsg.mqttMsgHead.msgFrom);
-	json.insert("timestamp", QString(mqttMsg.mqttMsgHead.timestamp));
-
-	QVariantMap variantMap = mqttMsg.submessageList[submessageIndex];
-	QJsonObject submessage;
-	QMapIterator<QString, QVariant> threaditer(variantMap);
-	while (threaditer.hasNext())
-	{
-		submessage.insert(threaditer.next().key(), threaditer.value().toString());
-	}
-	QJsonArray array;
-	array.push_back(submessage);
-
-	json.insert("submessages", array);
-
-	// 构建 JSON 文档
-	QJsonDocument document;
-	document.setObject(json);
-	QByteArray byteArray = document.toJson(QJsonDocument::Compact);
-	QString strJson(byteArray);
+	MqttMsgHelper mqttMsgHelper;
+	QString strMsg = mqttMsgHelper.convertToMqttMsg(mqttMsg, submessageIndex);
 
 	QString topic = TOPIC_RW_CTRL_SINGLE + m_slamConfig["id"];
 	QMQTT::Message message(mqttMsg.mqttMsgHead.timestamp, topic,
-		strJson.toUtf8(), MQTT_QOS_2);
+		strMsg.toUtf8(), MQTT_QOS_2);
 	publish(message);
 }
 
@@ -228,20 +209,10 @@ void RWConsumer::checkSlamStatus()
 
 void RWConsumer::publishToSch(QJsonObject &jsonobject)
 {
-	jsonobject.insert("messageType", "slamInfo");
-	jsonobject.insert("from", TOPIC_RW_SLAM_SINGLE + m_slamConfig["id"]);
+	MqttMsgHelper mqttMsgHelper;
+	QString strJson = mqttMsgHelper.convertToMqttMsg(jsonobject, m_slamConfig["id"]);
 
-	QDateTime time = QDateTime::currentDateTime();
-	int timeT = time.toTime_t();
-	jsonobject.insert("timestamp", QString::number(timeT));
-
-	// 构建 JSON 文档
-	QJsonDocument document;
-	document.setObject(jsonobject);
-	QByteArray byteArray = document.toJson(QJsonDocument::Compact);
-	QString strJson(byteArray);
-
-	QMQTT::Message message(timeT, TOPIC_RW_SCH, strJson.toUtf8(), MQTT_QOS_0);
+	QMQTT::Message message(mqttMsgHelper.getTimestamp(), TOPIC_RW_SCH, strJson.toUtf8(), MQTT_QOS_0);
 	publish(message);
 }
 

@@ -56,6 +56,9 @@
     <ClCompile Include="rwconsumer.cpp">
       <Filter>Source Files\Server</Filter>
     </ClCompile>
+    <ClCompile Include="mqttmsghelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -135,6 +138,9 @@
     </CustomBuild>
     <CustomBuild Include="rwconsumer.h">
       <Filter>Header Files\Server</Filter>
+    </CustomBuild>
+    <CustomBuild Include="mqttmsghelper.h">
+      <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

@@ -1,2 +1,6 @@
 
 .vs/SLAM Gateway/v14/.suo
+*.ilk
+*.pdb
+Win32/Debug/SLAM Gateway.ilk
+Win32/Debug/SLAM Gateway.pdb

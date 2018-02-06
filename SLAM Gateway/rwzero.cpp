@@ -153,8 +153,4 @@ void RWZero::moveTo(const RW::Submessage submessage)
 	{
 		rpos::actions::MoveAction moveAction = m_platform.moveTo(locations.toStdVector(), appending, isMilestone);
 	}
-
-	//		rpos::core::Location loc(location.x, location.y, location.z);
-
-	//rpos::actions::MoveAction moveAction = m_platform.moveTo(loc, appending, isMilestone);
 }
