@@ -4,3 +4,11 @@
 *.pdb
 Win32/Debug/SLAM Gateway.ilk
 Win32/Debug/SLAM Gateway.pdb
+*.db
+*.opendb
+*.tlog
+*.obj
+*.manifest
+*.lastbuildstate
+SLAM Gateway/Debug/SLAM Gateway.log
+SLAM Gateway/Debug/SLAM Gateway.res

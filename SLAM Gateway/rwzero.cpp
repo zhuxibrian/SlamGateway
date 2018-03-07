@@ -97,8 +97,8 @@ bool RWZero::isIdle()
 void RWZero::getSlamInfo(QJsonObject& jsonObject)
 {
 	rpos::core::Location location = m_platform.getLocation();
-	jsonObject.insert("locationX", QString::number(location.x(), 'f', 3));
-	jsonObject.insert("locationY", QString::number(location.y(), 'f', 3));
+	jsonObject.insert("x", QString::number(location.x(), 'f', 3));
+	jsonObject.insert("y", QString::number(location.y(), 'f', 3));
 }
 
 void RWZero::forward()
