@@ -1,8 +1,8 @@
 libini/iniparser.o: ../libini/iniparser.cpp ../libini/iniparser.h \
- ../libini/dictionary.h ../libini/strlib.h
+ ../libini/../libini/dictionary.h ../libini/strlib.h
 
 ../libini/iniparser.h:
 
-../libini/dictionary.h:
+../libini/../libini/dictionary.h:
 
 ../libini/strlib.h:

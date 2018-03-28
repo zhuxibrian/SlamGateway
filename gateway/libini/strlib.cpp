@@ -4,15 +4,16 @@
 	Author:			N.Devillard,ndevilla
 	Version:  		5.0
 	Date: 			2005-09-19
-	Description:	iniÅäÖÃÎÄ¼þ²Ù×÷
+	Description:	iniï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	Others:			
 	History:
 *************************************************/
 
+#include "strlib.h"
+
 #include <string.h>
 #include <ctype.h>
 
-#include "strlib.h"
 
 #define ASCIILINESZ 256
 

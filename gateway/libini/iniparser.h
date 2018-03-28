@@ -20,7 +20,7 @@
 #include <string.h>
 
 #define DONOT_USE_LOW_LETTER_SECTION_NAME	0
-#include "dictionary.h"
+#include "../libini/dictionary.h"
 
 namespace INI {
 
