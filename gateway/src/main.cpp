@@ -105,6 +105,21 @@ void slam_msg_dispatch(const char *topic, const char *msg) {
 }
 int main(int argc, char **argv) {
 	Config conf;
+	vector<SlamwareCorePlatform>;
+		    try {
+		        sdp = SlamwareCorePlatform::connect(argv[1], 1445);
+		        std::cout <<"SDK Version: " << sdp.getSDKVersion() << std::endl;
+		        std::cout <<"SDP Version: " << sdp.getSDPVersion() << std::endl;
+		    } catch(ConnectionTimeOutException& e) {
+		        std::cout <<e.what() << std::endl;
+		        return 1;
+		    } catch(ConnectionFailException& e) {
+		        std::cout <<e.what() << std::endl;
+		        return 1;
+		    }
+		    rpos::actions::MoveAction moveAction = sdp.getCurrentAction();
+		    moveAction.getStatus()
+
 	char path[PATH_MAX];
 	path_get_parent(argv[0], &path);
 	std::string conf_path = std::string("") + path + "config.ini";
@@ -116,22 +131,6 @@ int main(int argc, char **argv) {
 	for (;;)
 		;
 	mqtt.subscribe_exit(TOPIC_SLAM);
-
-
-	SlamwareCorePlatform sdp;
-	    try {
-	        sdp = SlamwareCorePlatform::connect(argv[1], 1445);
-	        std::cout <<"SDK Version: " << sdp.getSDKVersion() << std::endl;
-	        std::cout <<"SDP Version: " << sdp.getSDPVersion() << std::endl;
-	    } catch(ConnectionTimeOutException& e) {
-	        std::cout <<e.what() << std::endl;
-	        return 1;
-	    } catch(ConnectionFailException& e) {
-	        std::cout <<e.what() << std::endl;
-	        return 1;
-	    }
-	    rpos::actions::MoveAction moveAction = sdp.getCurrentAction();
-	    moveAction.getStatus()
 	return 0;
 
 }

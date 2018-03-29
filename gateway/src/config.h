@@ -17,6 +17,11 @@ struct Config : HxConfig {
 	HX_OPTION_VALUE(std::string,	password,	"PASSWORDus")
 	HX_OPTION_VALUE(uint32_t,		MQTT_QOS,	2)
 	HX_OPTION_VALUE(std::string,	mqtt_extra_param,	"")
+	/*
+	 * format <ip>[:port],<ip>[:port]
+	 * 		 slam plat,   ctrl board.
+	 */
+	HX_OPTION_VALUE(std::vector<std::string>,	slamsAddrList,	{"127.0.0.1:1445,127.0.0.1:1446",})
 	HX_OPTION_END()    // !!! must define HX_OPTION_END() !!!
 };
 
