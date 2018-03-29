@@ -95,9 +95,12 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.2029013566.1800474986" name="t.c" rcbsApplicability="disable" resourcePath="src/t.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949.1740140937">
+						<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949.1740140937" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949"/>
+					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="libini"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="t.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

@@ -1203,6 +1203,18 @@ src/main.o: ../src/main.cpp \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/boost/asio/impl/write_at.hpp \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/util/profiling.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/util/time_util.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_core_platform.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner/feature.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner/sweep_move_action.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/composite_map.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/metadata.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_sdp_platform_config.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/composite_map_defs.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/exception.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/map_layer.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_common_exception.h \
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h \
  ../src/config.h ../src/HxConfig.h ../src/utils.h ../src/mqtt_wrap.h \
  ../src/String.h ../src/cJSON.h
 
@@ -3613,6 +3625,30 @@ src/main.o: ../src/main.cpp \
 /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/util/profiling.h:
 
 /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/util/time_util.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_core_platform.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner/feature.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/features/sweep_motion_planner/sweep_move_action.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/composite_map.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/metadata.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_sdp_platform_config.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/composite_map_defs.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/exception.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/map_layer.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_common_exception.h:
+
+/home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h:
 
 ../src/config.h:
 
