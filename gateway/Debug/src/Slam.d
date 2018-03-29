@@ -1,4 +1,4 @@
-src/main.o: ../src/main.cpp ../src/App.h \
+src/Slam.o: ../src/Slam.cpp ../src/Slam.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos_config.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/boost/config.hpp \
@@ -1216,9 +1216,9 @@ src/main.o: ../src/main.cpp ../src/App.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_common_exception.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h \
  ../src/config.h ../src/HxConfig.h ../src/utils.h ../src/mqtt_wrap.h \
- ../src/String.h ../src/cJSON.h ../src/Slam.h
+ ../src/String.h ../src/cJSON.h
 
-../src/App.h:
+../src/Slam.h:
 
 /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos.h:
 
@@ -3663,5 +3663,3 @@ src/main.o: ../src/main.cpp ../src/App.h \
 ../src/String.h:
 
 ../src/cJSON.h:
-
-../src/Slam.h:

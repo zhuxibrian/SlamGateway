@@ -1,4 +1,4 @@
-src/main.o: ../src/main.cpp ../src/App.h \
+src/App.o: ../src/App.cpp ../src/App.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos_config.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/boost/config.hpp \

@@ -7,3 +7,15 @@
 
 #include "Slam.h"
 
+Slam::Slam(int index, String ip, uint16_t port)
+{
+
+}
+void Slam::nbConnect(int timeout)	//非阻塞链接
+{
+
+}
+bool Slam::isConnect()
+{
+
+}
