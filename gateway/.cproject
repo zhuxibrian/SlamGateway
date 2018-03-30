@@ -37,54 +37,14 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1622655480" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug.449894455" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.exe.debug">
 								<option id="gnu.cpp.link.option.paths.1469946130" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" useByScannerDiscovery="false"/>
-								<option id="gnu.cpp.link.option.libs.146343144" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
-									<listOptionValue builtIn="false" value="pthread"/>
-								</option>
+								<option id="gnu.cpp.link.option.libs.146343144" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs"/>
 								<option id="gnu.cpp.link.option.flags.1259849029" name="Linker flags" superClass="gnu.cpp.link.option.flags" useByScannerDiscovery="false" value="" valueType="string"/>
 								<option id="gnu.cpp.link.option.userobjs.16613137" name="Other objects" superClass="gnu.cpp.link.option.userobjs" useByScannerDiscovery="false" valueType="userObjs">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libbase64.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_atomic.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_chrono.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_container.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_context.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_coroutine.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_date_time.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_exception.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_filesystem.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_graph.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_locale.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_log_setup.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_log.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_c99.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_c99f.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_c99l.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_tr1.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_tr1f.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_math_tr1l.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_prg_exec_monitor.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_program_options.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_python.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_random.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_regex.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_serialization.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_signals.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_system.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_test_exec_monitor.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_thread.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_timer.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_unit_test_framework.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_wave.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libboost_wserialization.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libcrypto.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libcurl.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libgooglemock.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libgoogletest.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libjsoncpp.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/librlelib.a}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/librpos_framework.a}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/librpos_robotplatforms_rpslamware.a}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib/libssl.a}&quot;"/>
 								</option>
+								<option id="gnu.cpp.link.option.pthread.951901460" name="Support for pthread (-pthread)" superClass="gnu.cpp.link.option.pthread" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="gnu.cpp.link.option.shared.495857366" name="Shared (-shared)" superClass="gnu.cpp.link.option.shared" useByScannerDiscovery="false" value="false" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.967713082" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -95,9 +55,6 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.exe.debug.2029013566.1800474986" name="t.c" rcbsApplicability="disable" resourcePath="src/t.c" toolsToInvoke="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949.1740140937">
-						<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949.1740140937" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.2018717949"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="libini"/>
 						<entry excluding="t.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>

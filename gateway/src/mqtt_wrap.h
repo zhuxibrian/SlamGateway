@@ -13,7 +13,7 @@
 #include <map>
 #include <thread>
 using namespace std;
-typedef void OnMsgRecvFn(const char *topic, const char *msg);
+typedef void OnMsgRecvFn(const char *topic, const char *msg, void *vp);
 struct MqttSub {
 	string topic;
 	FILE *fstream;
@@ -35,8 +35,12 @@ public:
 			const string &password, int Qos = 2, const string &extra = "");
 	virtual ~MqttConnecttion() {
 	}
+	/*
+	 * on_msg_recv : 收到消息的回调函数
+	 * vp : 参数
+	 */
 	bool subscribe(const char *topic,
-			OnMsgRecvFn *on_msg_recv);
+			OnMsgRecvFn *on_msg_recv, void *vp=NULL);
 	bool subscribe_exit(const char *topic);
 	bool public_msg(const char *topic, const char *msg);
 };

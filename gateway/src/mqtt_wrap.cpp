@@ -19,18 +19,18 @@ MqttConnecttion::MqttConnecttion(const string &host, uint16_t port,
 		mHost(host), mPort(port), mUser(user), mPassword(password), mQos(Qos), mExtraParams(extra){
 	mSubList.clear();
 }
-static void mqtt_sub_fn(MqttSub *sub)
+static void mqtt_sub_fn(MqttSub *sub, void *vp)
 {
 	char buf[MQTT_SUB_BUFSIZ];
 	while(sub->runFlag && NULL!=fgets(buf,MQTT_SUB_BUFSIZ,sub->fstream)){
 		buf[MQTT_SUB_BUFSIZ-1]=0;
 		char *p = strchr(buf,' ');
 		*p++='\0';
-		sub->on_msg_recv(buf,p);
+		sub->on_msg_recv(buf,p,vp);
 	}
 }
 bool MqttConnecttion::subscribe(const char *topic,
-		OnMsgRecvFn *on_msg_recv) {
+		OnMsgRecvFn *on_msg_recv, void *vp) {
 	string t = topic;
 	if(mSubList.find(t) != mSubList.end()){
 		printf("subscribe:  topic already exist.");
@@ -50,7 +50,7 @@ bool MqttConnecttion::subscribe(const char *topic,
 	sub->fstream = fs;
 	sub->runFlag = true;
 	sub->on_msg_recv = on_msg_recv;
-	sub->sub_thread = new thread(mqtt_sub_fn,sub);
+	sub->sub_thread = new thread(mqtt_sub_fn,sub,vp);
 	mSubList[t] = sub;
 	return true;
 }

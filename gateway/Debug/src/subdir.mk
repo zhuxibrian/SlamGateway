@@ -4,7 +4,6 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../src/App.cpp \
 ../src/HxConfig.cpp \
 ../src/Slam.cpp \
 ../src/main.cpp \
@@ -15,7 +14,6 @@ C_SRCS += \
 ../src/cJSON.c 
 
 OBJS += \
-./src/App.o \
 ./src/HxConfig.o \
 ./src/Slam.o \
 ./src/cJSON.o \
@@ -24,7 +22,6 @@ OBJS += \
 ./src/utils.o 
 
 CPP_DEPS += \
-./src/App.d \
 ./src/HxConfig.d \
 ./src/Slam.d \
 ./src/main.d \

@@ -45,7 +45,7 @@ all: slam-gateway
 slam-gateway: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "slam-gateway" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -pthread -o "slam-gateway" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
