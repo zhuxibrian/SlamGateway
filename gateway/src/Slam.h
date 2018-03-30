@@ -21,6 +21,11 @@
 //using namespace rpos::robot_platforms;
 //using namespace rpos::features;
 //using namespace rpos::features::location_provider;
+#include "rpos/core/pose.h"
+#include "rpos/core/robot_platform.h"
+#include "rpos/robot_platforms/slamware_core_platform.h"
+using namespace rpos::core;
+using namespace rpos::robot_platforms;
 using namespace std;
 class Slam {
 	int mIndex;
@@ -29,7 +34,7 @@ class Slam {
 	String mCtrlBoardIp;
 	atomic<bool> mSlamSdkConnected;
 	atomic<bool> mCtrlBoardConnected;
-	//SlamwareCorePlatform *mSdp;
+	SlamwareCorePlatform mSdp;
 	static void threadSlamSdkFn(Slam *thisp, int timeout);
 	thread *mSlamSdkThread;
 public:

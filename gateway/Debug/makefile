@@ -45,7 +45,7 @@ all: slam-gateway
 slam-gateway: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -pthread -o "slam-gateway" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++-4.8 -L"/home/houxd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/lib" -static -fPIC -o "slam-gateway" $(OBJS) $(USER_OBJS) $(LIBS)  -Xlinker "-(" -lstdc++ -ldl -lrt -lm -lpthread -lrpos_robotplatforms_rpslamware -lrpos_framework -lboost_atomic -lboost_chrono -lboost_date_time -lboost_regex -lboost_system -lboost_filesystem -lboost_thread -lbase64 -ljsoncpp -lrlelib -lcrypto -lcurl -lssl -Xlinker "-)"
 	@echo 'Finished building target: $@'
 	@echo ' '
 

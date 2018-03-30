@@ -25,20 +25,20 @@ CXXFLAGS   := -std=c++0x
 LDFLAGS    := -static
 
 LD_LIBS    =  -Xlinker "-(" \
-              -lstdc++ -ldl -lrt -lm -lpthread \
               -l$(RPOS_SLAMWARE_NAME) -l$(RPOS_CORE_NAME) \
-              -lboost_atomic \
-              -lboost_chrono \
-              -lboost_date_time \
-              -lboost_regex \
-              -lboost_system \
-              -lboost_thread \
-              -lbase64 \
               -ljsoncpp \
               -lrlelib \
               -lcrypto \
               -lcurl \
               -lssl \
+              -lbase64 \
+	      -lboost_atomic \
+              -lboost_chrono \
+              -lboost_date_time \
+              -lboost_regex \
+              -lboost_system \
+              -lboost_thread \
+              -lstdc++ -ldl -lrt -lm -lpthread \
               -Xlinker "-)" \
 
 all: build_app
