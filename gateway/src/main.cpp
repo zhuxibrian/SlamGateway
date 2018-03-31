@@ -21,7 +21,6 @@
 #include "Slam.h"
 using namespace std;
 
-#define TOPIC_SLAM		"rw/slam/#"
 
 struct LocXY {
 	float x, y;
@@ -112,7 +111,7 @@ static void on_ctrl_single_msg(const char *topic, const char *msg, void *vp)
 		if(sscanf(topic,"rw/ctrl/single/%d",&index)!=1)
 			goto err;
 		if(slam->getIndex()!=index){
-			fprintf(stderr,"error index :want %s get %s\n",slam->getIndex(),index);
+			fprintf(stderr,"error index :want %d get %d\n",slam->getIndex(),index);
 			goto err;
 		}
 		cJSON *json = cJSON_Parse(msg);
@@ -183,16 +182,24 @@ static bool connectDevices()
 					slam->getIp().c_str(),slam->getPort());
 		}
 	}
-	//boardcast for all ctrls.
+	//boardcast for all ctrls, try to connect them.
 	cJSON_AddItemToObject(msg,"message",k_message);
 	mqtt->public_msg("rw/ctrl/all",cJSON_Print(msg));
 	cJSON_Delete(msg);
+	bool allConnected = true;
 	for(int i=0;i<(conf.slamCtrlBoardConTimeout/500);i++){
 		sleep(500);
-
+		for(Slam *slam : slams){
+			if(slam->isSlamSdkConnected() && (!slam->isCtrlBoardConnected()))
+				allConnected = false;
+		}
+		if(allConnected)
+			break;
 	}
-
-	return false;
+	if(!allConnected)
+		printf("Not all slam sdk have ctrlboard connected!!!\n");
+	//ok, work for connect complete.
+	return true;
 }
 
 int main(int argc, char **argv) {
@@ -208,9 +215,9 @@ int main(int argc, char **argv) {
 	if (!connectDevices())
 		return -1;
 
-	mqtt->subscribe(TOPIC_SLAM, &slam_msg_dispatch);
+	mqtt->subscribe("rw/slam/#", &slam_msg_dispatch);
 	for (;;);
-	mqtt->subscribe_exit(TOPIC_SLAM);
+	mqtt->subscribe_exit("rw/slam/#");
 	return 0;
 
 }
