@@ -11,16 +11,11 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+#include <cstdint>
+#include "Message.h"
+#include "mqtt_wrap.h"
 #include "String.h"
 #include "rpos/rpos.h"
-//#include <boost/thread.hpp>
-//#include <boost/chrono.hpp>
-//#include <rpos/robot_platforms/slamware_core_platform.h>
-//#include <rpos/features/location_provider/map.h>
-
-//using namespace rpos::robot_platforms;
-//using namespace rpos::features;
-//using namespace rpos::features::location_provider;
 #include "rpos/core/pose.h"
 #include "rpos/core/robot_platform.h"
 #include "rpos/robot_platforms/slamware_core_platform.h"
@@ -37,9 +32,22 @@ class Slam {
 	SlamwareCorePlatform mSdp;
 	static void threadSlamSdkFn(Slam *thisp, int timeout);
 	thread *mSlamSdkThread;
+	uint64_t msgIndex4Ctrl;
+	mutex mPerformMutex;
+	mutex mSdpMutex;
 public:
+	String text;
+	LocXY location;
+	String serveState;
+	String faultInfo;
+	Rotation rotation;
+
+	uint32_t battery;
+	String state;
+
 	Slam(int index, String ip, uint16_t port);
 	void connectSlamSdkNb(int timeout);	//非阻塞链接
+	void performTask(MqttConnecttion &mqtt, vector<ScheduleMsg::SubMessage> task);
 
 	int getIndex() const {
 		return mIndex;

@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/HxConfig.cpp \
+../src/Message.cpp \
 ../src/Slam.cpp \
 ../src/main.cpp \
 ../src/mqtt_wrap.cpp \
@@ -15,6 +16,7 @@ C_SRCS += \
 
 OBJS += \
 ./src/HxConfig.o \
+./src/Message.o \
 ./src/Slam.o \
 ./src/cJSON.o \
 ./src/main.o \
@@ -23,6 +25,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/HxConfig.d \
+./src/Message.d \
 ./src/Slam.d \
 ./src/main.d \
 ./src/mqtt_wrap.d \

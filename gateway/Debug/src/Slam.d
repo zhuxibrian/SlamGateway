@@ -1,4 +1,5 @@
-src/Slam.o: ../src/Slam.cpp ../src/Slam.h ../src/String.h \
+src/Slam.o: ../src/Slam.cpp ../src/Slam.h ../src/Message.h \
+ ../src/String.h ../src/mqtt_wrap.h \
  /home/hou/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos.h \
  /home/hou/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos_config.h \
  /home/hou/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/boost/config.hpp \
@@ -1218,7 +1219,11 @@ src/Slam.o: ../src/Slam.cpp ../src/Slam.h ../src/String.h \
 
 ../src/Slam.h:
 
+../src/Message.h:
+
 ../src/String.h:
+
+../src/mqtt_wrap.h:
 
 /home/hou/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/rpos.h:
 

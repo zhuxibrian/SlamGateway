@@ -19,47 +19,19 @@
 #include "String.h"
 #include "cJSON.h"
 #include "Slam.h"
+#include "Message.h"
 using namespace std;
-
-
-struct LocXY {
-	float x, y;
-};
-struct ScheduleMsg {
-	/*命令类型: command, info*/
-	String messageType;
-	/*命令描述*/
-	String text;
-	/*时间戳*/
-	String timestamp;
-	/*命令来源*/
-	String from;
-	/*子命令集合*/
-	struct SubMessage {
-		/*子命令类型*/
-		String submessage;
-		/*坐标点集合*/
-		vector<LocXY> points;
-		/*是否追加*/
-		bool appending;
-		/*是否路径规划*/
-		bool isMilestone;
-		/*负载设备动作时间*/
-		uint32_t serveTime;
-	};
-	vector<SubMessage> submessages;
-
-	bool parseFromJson(String s) {
-		return false;
-	}
-};
 
 static Config conf;
 static vector<Slam*> slams;
-MqttConnecttion *mqtt;
-int msgIndex4Ctrl=0;
+static MqttConnecttion *mqtt;
 
-static void slam_msg_dispatch(const char *topic, const char *msg, void *vp) {
+static bool parseSchedualMsg(const String &json, ScheduleMsg &msg)
+{
+
+	return false;
+}
+static void on_schedual_msg(const char *topic, const char *msg, void *vp) {
 	String t = topic;
 	String m = msg;
 	String topicPrefix = "rw/slam/";
@@ -75,23 +47,22 @@ static void slam_msg_dispatch(const char *topic, const char *msg, void *vp) {
 	}
 	if (ss[0] == "single") {
 		int index = ss[1].tol(10);
+		Slam *slam = slams[index];
+		if((!slam->isSlamSdkConnected()) || (!slam->isCtrlBoardConnected())){
+			fprintf(stderr,"error:  target slam or ctrl board not connect .\n");
+			return;
+		}
 		ScheduleMsg sm;
-		if (!sm.parseFromJson(msg)) {
+		if (!parseSchedualMsg(String(msg),sm)) {
 			fprintf(stderr, "slam msg parse error ：topic:%s, msg:%s\n", topic,
 					msg);
 			return;
 		}
+		//check timestamp msgindex .
+		//...
+
 		if (sm.messageType == "command") {
-			if (sm.text == "move") {
-
-			} else if (sm.text == "charge") {
-
-			} else {
-				fprintf(stderr, "bad text value\n");
-				return;
-			}
-		} else if (sm.messageType == "info") {
-
+			slam->performTask(*mqtt,sm.submessages);
 		} else {
 			fprintf(stderr, "bad messageType:%s\n", sm.messageType.c_str());
 			return;
@@ -102,7 +73,7 @@ static void slam_msg_dispatch(const char *topic, const char *msg, void *vp) {
 
 	}
 }
-static void on_ctrl_single_msg(const char *topic, const char *msg, void *vp)
+static void on_ctrl_msg(const char *topic, const char *msg, void *vp)
 {
 	String t = topic;
 	Slam *slam = (Slam*)vp;
@@ -117,17 +88,20 @@ static void on_ctrl_single_msg(const char *topic, const char *msg, void *vp)
 		cJSON *json = cJSON_Parse(msg);
 		String messageType = cJSON_Print(cJSON_GetObjectItem(json,"messageType"));
 		String timestamp = cJSON_Print(cJSON_GetObjectItem(json,"timestamp"));
-		String msgIndex = cJSON_Print(cJSON_GetObjectItem(json,"msgIndex"));
-		String result = cJSON_Print(cJSON_GetObjectItem(json,"result"));
+		String ip = cJSON_Print(cJSON_GetObjectItem(json,"ip"));
+		String state = cJSON_Print(cJSON_GetObjectItem(json,"state"));
+		String battery = cJSON_Print(cJSON_GetObjectItem(json,"battery"));
+		String serveState = cJSON_Print(cJSON_GetObjectItem(json,"serveState"));
 		String faultInfo = cJSON_Print(cJSON_GetObjectItem(json,"faultInfo"));
-		if(messageType=="chargeConnect"){
-
-		}if(messageType=="serve"){
-
-		}if(messageType=="getState"){
-			slam->setCtrlBoardIp(result);
-			slam->setCtrlBoardConnected(true);
-		}
+		if(messageType!="info")
+			goto err;
+		if(ip!="")
+			slam->setCtrlBoardIp(ip);
+		slam->setCtrlBoardConnected(true);
+		slam->battery = battery.tol(10);
+		slam->state = state;
+		slam->serveState = serveState;
+		slam->faultInfo= faultInfo;
 	}
 	return;
 err:
@@ -161,11 +135,12 @@ static bool connectDevices()
 		slam->connectSlamSdkNb(conf.slamConTimeout);
 		slams.push_back(slam);
 	}
-	sleep(conf.slamConTimeout+1000);//mabey all ok
+	usleep((conf.slamConTimeout+1000)*1000);//mabey all ok
+
 	cJSON *msg = cJSON_CreateObject();
 	cJSON_AddItemToObject(msg,"messageType",cJSON_CreateString("slamInfo"));
 	cJSON_AddItemToObject(msg,"timestamp",cJSON_CreateNumber(time(NULL)));
-	cJSON_AddItemToObject(msg,"msgIndex",cJSON_CreateNumber(msgIndex4Ctrl));
+	cJSON_AddItemToObject(msg,"msgIndex",cJSON_CreateNumber(0/*boardcast allways 0*/));
 	cJSON *k_message = cJSON_CreateArray();
 	for(Slam *slam : slams){
 		if(slam->isSlamSdkConnected()){
@@ -176,7 +151,7 @@ static bool connectDevices()
 			cJSON_AddItemToArray(k_message,item);
 			//subscribe target ctrl, check connect.
 			mqtt->subscribe(String().snprintf(512,"/rw/ctrl/single/%d",slam->getIndex()),
-					on_ctrl_single_msg, slam);
+					on_ctrl_msg, slam);
 		}else{
 			fprintf(stderr,"the target slam sdk cannot connect ip:%s index:%d\n",
 					slam->getIp().c_str(),slam->getPort());
@@ -186,9 +161,10 @@ static bool connectDevices()
 	cJSON_AddItemToObject(msg,"message",k_message);
 	mqtt->public_msg("rw/ctrl/all",cJSON_Print(msg));
 	cJSON_Delete(msg);
+
 	bool allConnected = true;
-	for(int i=0;i<(conf.slamCtrlBoardConTimeout/500);i++){
-		sleep(500);
+	for(uint i=0;i<(conf.slamCtrlBoardConTimeout/500);i++){
+		usleep(500000);
 		for(Slam *slam : slams){
 			if(slam->isSlamSdkConnected() && (!slam->isCtrlBoardConnected()))
 				allConnected = false;
@@ -207,7 +183,7 @@ int main(int argc, char **argv) {
 	cJSON_InitHooks(&cjsonHooks);
 	char path[PATH_MAX];
 	path_get_parent(argv[0], &path);
-	std::string conf_path = std::string("") + path + "config.ini";
+	std::string conf_path = std::string(path) + "config.ini";
 	if (!conf.Load(conf_path.c_str()))
 		conf.Save(conf_path.c_str());
 	mqtt = new MqttConnecttion(conf.host, conf.port, conf.user, conf.password,
@@ -215,8 +191,42 @@ int main(int argc, char **argv) {
 	if (!connectDevices())
 		return -1;
 
-	mqtt->subscribe("rw/slam/#", &slam_msg_dispatch);
-	for (;;);
+	mqtt->subscribe("rw/slam/#", &on_schedual_msg);
+	for (;;){
+		String msg = String().snprintf(4096,
+			"{"
+			"	\"messageType\":\"info\","
+			"	\"timestamp\":%u,"
+			"	\"slams\":[",
+			time(NULL));
+		for(Slam* slam : slams){
+			msg= msg+String().snprintf(4096,
+				"{"
+				"	\"index\":%u,"
+				"	\"text\":\"%s\","
+				"	\"state\":\"%s\","
+				"	\"location\":\"%lf,%lf\","
+				"	\"battery\":%u,"
+				"	\"serveState\":\"%s\","
+				"	\"faultInfo\":\"%s\","
+				"	\"rotation\":\"%lf,%lf,%lf\""
+				"},",
+				slam->getIndex(),
+				slam->text.c_str(),
+				slam->state.c_str(),
+				slam->location.x,slam->location.y,
+				slam->battery,
+				slam->serveState.c_str(),
+				slam->faultInfo.c_str(),
+				slam->rotation.pitch(),slam->rotation.roll(),slam->rotation.yaw()
+			);
+		}
+		msg = msg+
+		"	]"
+		"}";
+		mqtt->public_msg("rw/slam/state",msg);
+		usleep(1000000);
+	}
 	mqtt->subscribe_exit("rw/slam/#");
 	return 0;
 
