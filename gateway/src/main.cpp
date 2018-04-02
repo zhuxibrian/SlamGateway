@@ -29,6 +29,25 @@ static MqttConnecttion *mqtt;
 static bool parseSchedualMsg(const String &json, ScheduleMsg &msg)
 {
 
+	cJSON *j = cJSON_Parse(json.c_str());
+	msg.messageType  = cJSON_Print(cJSON_GetObjectItem(j, "messageType"));
+	msg.timestamp = cJSON_Print(cJSON_GetObjectItem(j, "timestamp"));
+	msg.text = cJSON_Print(cJSON_GetObjectItem(j, "text"));
+	msg.from = cJSON_Print(cJSON_GetObjectItem(j, "from"));
+	cJSON *submessages = cJSON_GetObjectItem(j, "submessages");
+	int sz = cJSON_GetArraySize(submessages);
+	msg.submessages.clear();
+	for(int i=0;i<sz;i++){
+		cJSON *message = cJSON_GetArrayItem(submessages,0);
+		ScheduleMsg::SubMessage sm = {
+				.submessage = cJSON_Print(cJSON_GetObjectItem(message, "submessage")),
+				.points = {
+
+				}
+		};
+		msg.submessages.push_back(sm);
+	}
+
 	return false;
 }
 static void on_schedual_msg(const char *topic, const char *msg, void *vp) {
