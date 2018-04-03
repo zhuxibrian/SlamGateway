@@ -317,8 +317,11 @@ bool HxConfig::Load(const char *filePath)
 			p->setValue(p->getDefVal());
 		p = p->getNext();
 	}while(!p->isEnd());
-	inifile_close(ini);
-	return true;
+	if(ini){
+		inifile_close(ini);
+		return true;
+	}
+	return false;
 }
 
 bool HxConfig::Save(const char *filePath)

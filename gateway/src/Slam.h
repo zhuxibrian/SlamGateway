@@ -73,7 +73,7 @@ public:
 		return mCtrlBoardConnected;
 	}
 
-	void setCtrlBoardConnected(bool alive = false) {
+	void setCtrlBoardConnected(bool alive) {
 		mCtrlBoardConnected = alive;
 	}
 
@@ -81,7 +81,7 @@ public:
 		return mSlamSdkConnected;
 	}
 
-	void setSlamSdkConnected(bool slamSdkConnected = false) {
+	void setSlamSdkConnected(bool slamSdkConnected) {
 		mSlamSdkConnected = slamSdkConnected;
 	}
 };

@@ -21,7 +21,7 @@ struct Config : HxConfig {
 	 * format <ip>[:port]
 	 * 		 slam plat ip index
 	 */
-	HX_OPTION_VALUE(std::vector<std::string>,	slamsAddrList,	{"127.0.0.1:1445",})
+	HX_OPTION_VALUE(std::vector<std::string>,	slamsAddrList,	{"127.0.0.1:1445","127.0.0.1:1447"})
 	HX_OPTION_VALUE(uint32_t,		slamConTimeout,	10000)
 	HX_OPTION_VALUE(uint32_t,		slamCtrlBoardConTimeout,	5000)
 	HX_OPTION_END()    // !!! must define HX_OPTION_END() !!!

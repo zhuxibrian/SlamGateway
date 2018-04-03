@@ -178,7 +178,7 @@ static bool connectDevices()
 	for(uint i=0;i<slamIpList.size();i++){
 		Slam *slam = new Slam(i, slamIpList[i], slamPortList[i]);
 #ifdef __DEBUG__
-		slam->setSlamSdkConnected();
+		slam->setSlamSdkConnected(true);
 #else
 		slam->connectSlamSdkNb(conf.slamConTimeout);
 #endif
@@ -211,24 +211,33 @@ static bool connectDevices()
 	mqtt->public_msg("rw/ctrl/all",cJSON_Print(msg));
 	cJSON_Delete(msg);
 
-	bool allConnected = true;
+	bool haveNotConnected = false;
+	bool allNotConnected = true;
 	for(uint i=0;i<(conf.slamCtrlBoardConTimeout/500);i++){
 		usleep(500000);
 		for(Slam *slam : slams){
 			if(slam->isSlamSdkConnected() && (!slam->isCtrlBoardConnected()))
-				allConnected = false;
+				haveNotConnected = true;
+			else
+				allNotConnected = false;
 		}
-		if(allConnected)
+		if(haveNotConnected)
 			break;
 	}
-	if(!allConnected)
-		printf("Not all slam sdk have ctrlboard connected!!!\n");
+	if(allNotConnected){
+		vfault("No Slam Device Connected.\n");
+		return false;
+	}
+	if(haveNotConnected)
+		vinfo("Not all slam sdk have ctrlboard connected!!!\n");
 	//ok, work for connect complete.
 	return true;
 }
 
 int main(int argc, char **argv) {
-	printf(	"Slam Gateway Program V0.1\n");
+	char exe[NAME_MAX];
+	path_get_filename(argv[0], &exe);
+	printf(	"Slam gateway program V0.1, \"%s N\" N=0(default),1,2,3 is verbose level\n",exe);
 	printf(	"------------------------------------------------------------\n");
 	if(argc>=2){
 		verboseLevel = String(argv[1]).toul();
@@ -242,7 +251,7 @@ int main(int argc, char **argv) {
 		conf.Save(conf_path.c_str());
 	mqtt = new MqttConnecttion(conf.host, conf.port, conf.user, conf.password,
 			conf.MQTT_QOS, conf.mqtt_extra_param);
-	printf("connect slam sdk & ctrl boards. maybe use about 10s.\n");
+	printf("connect slam sdk & ctrl boards. maybe use about 10s...\n");
 	if (!connectDevices())
 		return -1;
 
