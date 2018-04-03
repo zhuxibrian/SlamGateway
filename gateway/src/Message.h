@@ -14,6 +14,8 @@ using namespace std;
 
 struct LocXY {
 	double x, y;
+	LocXY():x(0),y(0){}
+	LocXY(double _x, double _y):x(_x),y(_y){}
 };
 struct ScheduleMsg {
 	/*命令类型: command, info*/

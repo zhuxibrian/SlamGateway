@@ -112,4 +112,5 @@ extern void path_get_filename(const char *fpath, char (*fname)[NAME_MAX]);
 uint32_t crc32c(const uint8_t *data, unsigned int length);
 uint32_t crc32c(uint32_t crc, const uint8_t *data, unsigned int length);
 
+
 #endif /* UTILS_H_ */

@@ -1215,7 +1215,8 @@ src/Slam.o: ../src/Slam.cpp ../src/Slam.h ../src/Message.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/system/exception.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/map_layer.h \
  /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_common_exception.h \
- /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h
+ /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h \
+ ../src/main.h
 
 ../src/Slam.h:
 
@@ -3656,3 +3657,5 @@ src/Slam.o: ../src/Slam.cpp ../src/Slam.h ../src/Message.h \
 /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/slamware_common_exception.h:
 
 /home/xd/work/ruiwei/SlamGateway/gateway/slamware_sdk_linux-x86_64-gcc4.8/linux-x86_64-debug/include/rpos/robot_platforms/objects/slamware_firmware_service.h:
+
+../src/main.h:

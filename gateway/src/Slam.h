@@ -23,7 +23,7 @@ using namespace rpos::core;
 using namespace rpos::robot_platforms;
 using namespace std;
 class Slam {
-	int mIndex;
+	int mSlamId;
 	String mIp;
 	uint16_t mPort;
 	String mCtrlBoardIp;
@@ -33,11 +33,10 @@ class Slam {
 	static void threadSlamSdkFn(Slam *thisp, int timeout);
 	thread *mSlamSdkThread;
 	uint64_t msgIndex4Ctrl;
-	mutex mPerformMutex;
 	mutex mSdpMutex;
 public:
 	String text;
-	LocXY location;
+	Location location;
 	String serveState;
 	String faultInfo;
 	Rotation rotation;
@@ -48,9 +47,10 @@ public:
 	Slam(int index, String ip, uint16_t port);
 	void connectSlamSdkNb(int timeout);	//非阻塞链接
 	void performTask(MqttConnecttion &mqtt, vector<ScheduleMsg::SubMessage> task);
-
-	int getIndex() const {
-		return mIndex;
+	void waitLastMoveAction();
+	void updateState();
+	int getSlamId() const {
+		return mSlamId;
 	}
 
 	const String& getIp() const {

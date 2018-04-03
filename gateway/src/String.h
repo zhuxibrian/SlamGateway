@@ -88,12 +88,13 @@ public:
         iss >> num;
         return num;
     }
-    inline unsigned long int        toul(int base = 10)    {return strtoul(this->c_str(),NULL,base);}
-    inline unsigned long long int     toull(int base = 10){return strtoull(this->c_str(),NULL,base);}
-    inline unsigned int                 tol(int base = 10)    {return strtol(this->c_str(),NULL,base);}
-    inline unsigned long int         toll(int base = 10) {return strtoll(this->c_str(),NULL,base);}
-    inline float                     toul()                {return strtof(this->c_str(),NULL);}
-    inline double                     toull()                {return strtod(this->c_str(),NULL);}
+    inline long int					tol(int base = 10)		{return strtol(this->c_str(),NULL,base);}
+    inline long long int			toll(int base = 10) 	{return strtoll(this->c_str(),NULL,base);}
+    inline unsigned long int		toul(int base = 10)    	{return strtoul(this->c_str(),NULL,base);}
+    inline unsigned long long int	toull(int base = 10)	{return strtoull(this->c_str(),NULL,base);}
+    inline float					tof()                	{return strtof(this->c_str(),NULL);}
+    inline double					tod()					{return strtod(this->c_str(),NULL);}
+    inline long double				told()					{return strtold(this->c_str(),NULL);}
     template<typename... _Args>
     inline String& snprintf(int bufSize, const char *fmt, _Args... args){
         char *buf = new char[bufSize];
